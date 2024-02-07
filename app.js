@@ -2,7 +2,7 @@ const searchButton = document.getElementById("search-button");
 
 searchButton.addEventListener("click", checkCEP);
 
-function checkCEP() {
+async function checkCEP() {
     let cep = document.getElementById('cep-input').value.trim();
     let result = document.getElementById('result');
     let map = document.getElementById('map');
@@ -50,10 +50,9 @@ function checkCEP() {
         })
         .catch(error => {
             console.error('Erro ao tentar consultar o CEP:', error);
-            document.body.style.cursor = 'default';
             result.innerHTML = '<p>Ocorreu um erro ao consultar o CEP!</p>';
         });    
-    }, 500);
+    }, 400);
 }
 
 function showMap() {
@@ -72,6 +71,6 @@ function showMap() {
         map.innerHTML = `<iframe src="${mapUrl}"></iframe>`;
         document.getElementById("show-button").style.display = 'none';
         document.body.style.cursor = 'default';
-    }, 500);
+    }, 700);
 }
 
