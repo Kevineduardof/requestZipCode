@@ -21,7 +21,7 @@ function checkCEP() {
         .then(response => {
             document.body.style.cursor = 'default';
             if (!response.ok) {
-                throw new Error('CEP não encontrado!');
+                alert('CEP não encontrado!');
             }
             return response.json();
         })
@@ -58,11 +58,11 @@ function showMap() {
     let lng = document.getElementById('lng').innerText;
 
     if (!lat || !lng) {
-        map.innerHTML = '<p>Latitude e/ou Longitude indisponíveis para exibir o mapa!</p>';
+        map.innerHTML = '<p>Latitude e Longitude indisponíveis para exibir o mapa!</p>';
         return;
     }
 
     let mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&hl=pt&z=14&output=embed`;
 
-    map.innerHTML = `<iframe width="100%" height="300" frameborder="0" style="border:0" src="${mapUrl}"></iframe>`;
+    map.innerHTML = `<iframe src="${mapUrl}"></iframe>`;
 }
